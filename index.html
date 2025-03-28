@@ -1,14 +1,20 @@
-
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Влог</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Мой Интеллигентный Влог</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing Script:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Dancing Script', serif;
             background: url('https://i.okcdn.ru/i?r=BDHsYJQ9nKW8WSbKUwTOyh4ogcNcNHaypKUmy6E01lHuJiwG6UzK019EO4ypBM7uiSU&dpr=2') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
@@ -16,76 +22,189 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            color: black;
-            padding: 20px;
-        }h1 {
-        font-weight: 700;
-        font-size: 36px;
-        background: rgba(255, 255, 255, 0.7);
-        padding: 10px;
-        border-radius: 10px;
-    }
+            color: #3b4c3a; /* Глубокий зелёный для спокойного и интеллигентного вида */
+            padding: 40px;
+            animation: fadeIn 2s ease-in-out;
+        }
 
-    .video-container {
-        margin: 20px 0;
-    }
+        header {
+            font-family: 'Oswald', serif;
+            font-weight: 500;
+            font-size: 28px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 15px;
+            color: #2a3d2a; /* Тёмно-зелёный для интеллигентности */
+            text-align: center;
+            animation: slideIn 1.5s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Легкая тень для заголовка */
+        }
 
-    iframe {
-        width: 80%;
-        max-width: 800px;
-        height: 450px;
-        border-radius: 10px;
-    }
+        p {
+            font-size: 18px;
+            color: #4b5d3b; /* Мягкий зелёный цвет */
+            margin-bottom: 24px;
+            transition: color 0.3s ease;
+            max-width: 500px;
+            line-height: 1.7;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    .post {
-        background: rgba(255, 255, 255, 0.7);
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 10px;
-        max-width: 600px;
-    }
+        p:hover {
+            color: #2e8b57; /* Яркий зелёный при наведении */
+        }
 
-    a {
-        text-decoration: none;
-        font-weight: bold;
-        color: blue;
-    }
+        .video-container {
+            margin-bottom: 18px;
+            animation: zoomIn 2s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень вокруг видео */
+        }
 
-    a:hover {
-        color: darkblue;
-    }
-</style>
+        iframe {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
 
+        section.post {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 24px;
+            margin: 20px 0;
+            border-radius: 20px;
+            max-width: 500px;
+            color: #3b4c3a; /* Тёмно-зелёный цвет для текста поста */
+            animation: fadeInUp 2s ease-out;
+            transition: background 0.3s ease;
+        }
+
+        section.post:hover {
+            background: rgba(0, 128, 0, 0.5); /* Зелёный фон при наведении */
+        }
+
+        section.post h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #006400; /* Ярко-зелёный цвет для подзаголовков */
+            font-family: 'Roboto Slab', serif;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Тень для подзаголовков */
+        }
+
+        section.post p {
+            font-size: 20px;
+            line-height: 1.8;
+            font-family: 'Merriweather', serif;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.2); /* Легкая тень для текста */
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #1E90FF; /* Синий цвет для ссылок */
+            transition: color 0.3s ease;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        a:hover {
+            color: #4682B4;
+            text-decoration: underline;
+        }
+
+        .links-container {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: left;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .links-container ol {
+            list-style-position: inside;
+        }
+
+        .links-container li {
+            margin: 15px 0;
+            font-size: 20px;
+        }
+
+        .links-container li a {
+            font-size: 20px;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Добро пожаловать в мой Влог!</h1>
-    <p>Подписывайтесь и следите за новыми видео и постами.</p><div class="video-container">
-    <iframe src="https://www.youtube.com/embed/mFMgnGCjONw?start=74" frameborder="0" allowfullscreen></iframe>
-</div>
+    <header>
+        Добро пожаловать в мир глубоких размышлений и позитивных открытий
+    </header>
+    <p>Здесь мы делимся мыслями, которые вдохновляют, и видео, которые расширяют горизонты. Станьте частью интеллектуальной среды!</p>
 
-<div class="post">
-    <h2>Мой первый пост</h2>
-    <p>Сегодня я расскажу вам о моем первом опыте ведения блога. Это невероятно интересно!</p>
-</div>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/mFMgnGCjONw?start=74" frameborder="0" allowfullscreen></iframe>
+    </div>
 
-<div class="post">
-    <h2>Новые приключения</h2>
-    <p>На этой неделе я посетил удивительное место! Скоро выйдет видео, оставайтесь с нами!</p>
-</div>
+    <section class="post">
+        <h2>Размышления о жизни: мой первый пост</h2>
+        <p>Мой путь в мир блогинга начался с желания поделиться глубокими размышлениями о том, что по-настоящему важно. Это пространство для интеллектуального обмена.</p>
+    </section>
 
+    <section class="post">
+        <h2>Новые горизонты: Путеводитель по приключениям</h2>
+        <p>Каждое новое путешествие наполняет меня глубокими эмоциями и новым взглядом на мир. Следите за обновлениями!</p>
+    </section>
+
+    <div class="links-container">
+        <p>Полезные источники для расширения кругозора:</p>
+        <ol>
+            <li><a href="https://www.google.com" target="_blank">Google</a></li>
+            <li><a href="https://www.wikipedia.org" target="_blank">Wikipedia</a></li>
+            <li><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
+            <li><a href="https://www.instagram.com/alhamdulillah__24" target="_blank">Instagram</a></li>
+            <li><a href="https://wa.me/+996709356962" target="_blank">WhatsApp</a></li>
+        </ol>
+    </div>
 </body>
 </html>
-    <p>
-        Здесь вы найдете несколько полезных ссылок.
-    </p>
-    <!-- Нумерованный список ссылок -->
-    <ol>
-        <li><a href="https://www.google.com" target="_blank">Google</a></li>
-        <li><a href="https://www.wikipedia.org" target="_blank">Wikipedia</a></li>
-        <li><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
-        <li><a href="https://www.instagram.com/alhamdulillah__24" target="_blank">Instagram</a></li>
-        <li><a href="https://wa.me/+996709356962" target="_blank">WhatsApp</a></li>
-    </ol>
-</body>
-</html>
-
