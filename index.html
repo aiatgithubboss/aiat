@@ -1,69 +1,82 @@
-<!DOCTYPE html>
-<html lang="ru">
+
+<!DOCTYPE html><html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Красивый шрифт на веб-странице</title>
-    <!-- Подключаем шрифт Roboto -->
+    <title>Мой Влог</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Применяем шрифт Roboto ко всей странице */
         body {
             font-family: 'Roboto', sans-serif;
             background: url('https://i.okcdn.ru/i?r=BDHsYJQ9nKW8WSbKUwTOyh4ogcNcNHaypKUmy6E01lHuJiwG6UzK019EO4ypBM7uiSU&dpr=2') no-repeat center center fixed;
             background-size: cover;
-            height: 100vh; /* Высота страницы на весь экран */
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             text-align: center;
             color: black;
-        }
+            padding: 20px;
+        }h1 {
+        font-weight: 700;
+        font-size: 36px;
+        background: rgba(255, 255, 255, 0.7);
+        padding: 10px;
+        border-radius: 10px;
+    }
 
-        /* Стили для заголовка */
-        h1 {
-            font-weight: 700;
-            font-size: 36px;
-            background: rgba(255, 255, 255, 0.7); /* Полупрозрачный фон */
-            padding: 10px;
-            border-radius: 10px;
-        }
+    .video-container {
+        margin: 20px 0;
+    }
 
-        /* Стили для параграфа */
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 10px;
-            border-radius: 10px;
-        }
+    iframe {
+        width: 80%;
+        max-width: 800px;
+        height: 450px;
+        border-radius: 10px;
+    }
 
-        /* Стили для списка */
-        ol {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 10px;
-            border-radius: 10px;
-            list-style-position: inside;
-        }
+    .post {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 10px;
+        max-width: 600px;
+    }
 
-        a {
-            text-decoration: none;
-            font-weight: bold;
-            color: blue;
-        }
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: blue;
+    }
 
-        a:hover {
-            color: darkblue;
-        }
-    </style>
+    a:hover {
+        color: darkblue;
+    }
+</style>
+
 </head>
 <body>
-    <h1>Менин жеке баракчама кош келиниз!</h1>
+    <h1>Добро пожаловать в мой Влог!</h1>
+    <p>Подписывайтесь и следите за новыми видео и постами.</p><div class="video-container">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class="post">
+    <h2>Мой первый пост</h2>
+    <p>Сегодня я расскажу вам о моем первом опыте ведения блога. Это невероятно интересно!</p>
+</div>
+
+<div class="post">
+    <h2>Новые приключения</h2>
+    <p>На этой неделе я посетил удивительное место! Скоро выйдет видео, оставайтесь с нами!</p>
+</div>
+
+</body>
+</html>
     <p>
-        Добро пожаловать на мою первую веб-страницу. Здесь вы найдете несколько полезных ссылок.
+        Здесь вы найдете несколько полезных ссылок.
     </p>
     <!-- Нумерованный список ссылок -->
     <ol>
