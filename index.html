@@ -310,7 +310,56 @@
     </style>
 </head>
 <body>
-    <h1>Обсуждение (локальное)</h1>
+
+    <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обсуждение</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background: url('https://i.okcdn.ru/i?r=BDHsYJQ9nKW8WSbKUwTOyh4ogcNcNHaypKUmy6E01lHuJiwG6UzK019EO4ypBM7uiSU&dpr=2') no-repeat center center fixed; 
+            background-size: cover;
+            color: white;
+        }
+        .discussion-container { 
+            max-width: 600px; 
+            margin: auto; 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black;
+        }
+        .message { 
+            text-align: left; 
+            margin-bottom: 15px; 
+            padding: 10px; 
+            background: #ecf0f1; 
+            border-radius: 8px; 
+        }
+        .message strong { color: #2c3e50; }
+        input, button { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 10px; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 16px; 
+        }
+        button { 
+            background: #3498db; 
+            color: white; 
+            cursor: pointer; 
+        }
+        button:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>Обсуждение</h1>
     <div class="discussion-container">
         <div id="messages"></div>
         <input type="text" id="username" placeholder="Ваше имя">
