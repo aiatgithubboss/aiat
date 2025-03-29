@@ -311,12 +311,13 @@
 </head>
 <body>
 
-    <!DOCTYPE html>
+    
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Обсуждение</title>
+    <title>Обсуждение (локальное)</title>
     <style>
         body { 
             font-family: Arial, sans-serif; 
@@ -340,21 +341,8 @@
             padding: 10px; 
             background: #ecf0f1; 
             border-radius: 8px; 
-            position: relative;
         }
         .message strong { color: #2c3e50; }
-        .delete-btn { 
-            position: absolute; 
-            top: 5px; 
-            right: 10px; 
-            background: red; 
-            color: white; 
-            border: none; 
-            cursor: pointer; 
-            padding: 5px;
-            border-radius: 5px;
-        }
-        .delete-btn:hover { background: darkred; }
         input, button { 
             width: 100%; 
             padding: 10px; 
@@ -385,11 +373,10 @@
             let messages = JSON.parse(localStorage.getItem('messages')) || [];
             const messagesDiv = document.getElementById('messages');
             messagesDiv.innerHTML = '';
-            messages.forEach((msg, index) => {
+            messages.forEach(msg => {
                 let div = document.createElement('div');
                 div.classList.add('message');
-                div.innerHTML = `<strong>${msg.username}:</strong> ${msg.text} <br><small>${msg.time}</small> 
-                    <button class="delete-btn" onclick="deleteMessage(${index})">Удалить</button>`;
+                div.innerHTML = `<strong>${msg.username}:</strong> ${msg.text} <br><small>${msg.time}</small>`;
                 messagesDiv.appendChild(div);
             });
         }
@@ -405,13 +392,6 @@
                 document.getElementById('message').value = '';
                 loadMessages();
             }
-        }
-
-        function deleteMessage(index) {
-            let messages = JSON.parse(localStorage.getItem('messages')) || [];
-            messages.splice(index, 1);
-            localStorage.setItem('messages', JSON.stringify(messages));
-            loadMessages();
         }
 
         loadMessages();
