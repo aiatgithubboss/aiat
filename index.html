@@ -340,8 +340,21 @@
             padding: 10px; 
             background: #ecf0f1; 
             border-radius: 8px; 
+            position: relative;
         }
         .message strong { color: #2c3e50; }
+        .delete-btn { 
+            position: absolute; 
+            top: 5px; 
+            right: 10px; 
+            background: red; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .delete-btn:hover { background: darkred; }
         input, button { 
             width: 100%; 
             padding: 10px; 
@@ -372,10 +385,11 @@
             let messages = JSON.parse(localStorage.getItem('messages')) || [];
             const messagesDiv = document.getElementById('messages');
             messagesDiv.innerHTML = '';
-            messages.forEach(msg => {
+            messages.forEach((msg, index) => {
                 let div = document.createElement('div');
                 div.classList.add('message');
-                div.innerHTML = `<strong>${msg.username}:</strong> ${msg.text} <br><small>${msg.time}</small>`;
+                div.innerHTML = `<strong>${msg.username}:</strong> ${msg.text} <br><small>${msg.time}</small> 
+                    <button class="delete-btn" onclick="deleteMessage(${index})">Удалить</button>`;
                 messagesDiv.appendChild(div);
             });
         }
@@ -391,6 +405,13 @@
                 document.getElementById('message').value = '';
                 loadMessages();
             }
+        }
+
+        function deleteMessage(index) {
+            let messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.splice(index, 1);
+            localStorage.setItem('messages', JSON.stringify(messages));
+            loadMessages();
         }
 
         loadMessages();
