@@ -4,9 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Интеллигентный Влог</title>
+    <title>Насаат медиа</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing Script:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
+    
+      // Frontend: добавление голосования к видео const socket = new WebSocket('ws://localhost:3000'); let votes = {};
+
+socket.onmessage = (event) => { votes = JSON.parse(event.data); updateVotes(); };
+
+function sendVote(videoId, vote) { socket.send(JSON.stringify({ videoId, vote })); }
+
+function updateVotes() { document.querySelectorAll('.video-container').forEach(container => { const videoId = container.getAttribute('data-video-id'); const likes = votes[videoId]?.likes || 0; const dislikes = votes[videoId]?.dislikes || 0;
+
+container.querySelector('.like-count').textContent = likes;
+    container.querySelector('.dislike-count').textContent = dislikes;
+});
+
+}
+
+document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('.video-container').forEach(container => { const videoId = container.getAttribute('data-video-id');
+
+const likeBtn = document.createElement('button');
+    likeBtn.textContent = '👍';
+    likeBtn.onclick = () => sendVote(videoId, 'like');
+
+    const dislikeBtn = document.createElement('button');
+    dislikeBtn.textContent = '👎';
+    dislikeBtn.onclick = () => sendVote(videoId, 'dislike');
+
+    const likeCount = document.createElement('span');
+    likeCount.className = 'like-count';
+    likeCount.textContent = '0';
+
+    const dislikeCount = document.createElement('span');
+    dislikeCount.className = 'dislike-count';
+    dislikeCount.textContent = '0';
+
+    container.appendChild(likeBtn);
+    container.appendChild(likeCount);
+    container.appendChild(dislikeBtn);
+    container.appendChild(dislikeCount);
+});
+
+});
+
+
+    
+    
         * {
             margin: 0;
             padding: 0;
@@ -68,7 +112,7 @@
         animation: zoomIn 2s ease-in-out;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень вокруг видео */
     }
-
+    
     
         section.post {
             background: rgba(255, 255, 255, 0.9);
@@ -180,17 +224,81 @@
     </header>
     <p>Здесь мы делимся мыслями, которые вдохновляют, и видео, которые расширяют горизонты. Станьте частью интеллектуальной среды!</p>
 
-    <div class="video-container">
+    
+    
+    
+     <div class="video-container">
         <iframe src="https://www.youtube.com/embed/mFMgnGCjONw?start=74" frameborder="0" allowfullscreen></iframe>
         <p>Это видео рассказывает о глубине наших мыслей и вдохновляет на новые открытия.</p>
+
+        <div class="votes">
+            <button class="vote-btn" id="vote-up-video1" onclick="vote('video1', 'up')">👍</button>
+            <button class="vote-btn" id="vote-down-video1" onclick="vote('video1', 'down')">👎</button>
+        </div>
+        <div class="vote-count" id="video1-votes">
+            Голоса: <span id="video1-up">0</span> 👍 / <span id="video1-down">0</span> 👎
+        </div>
     </div>
-    
-    
-    
+
     <div class="video-container">
-    <iframe src="https://youtube.com/embed/Uc3xONseoTU?t=1s" frameborder="0" allowfullscreen></iframe>
-    <p>Это видео рассказывает о глубине наших мыслей и вдохновляет на новые открытия.</p>
-</div>
+        <iframe src="https://youtube.com/embed/Uc3xONseoTU?t=1s" frameborder="0" allowfullscreen></iframe>
+        <p>Это видео рассказывает о глубине наших мыслей и вдохновляет на новые открытия.</p>
+
+        <div class="votes">
+            <button class="vote-btn" id="vote-up-video2" onclick="vote('video2', 'up')">👍</button>
+            <button class="vote-btn" id="vote-down-video2" onclick="vote('video2', 'down')">👎</button>
+        </div>
+        <div class="vote-count" id="video2-votes">
+            Голоса: <span id="video2-up">0</span> 👍 / <span id="video2-down">0</span> 👎
+        </div>
+    </div>
+
+    <script>
+        // Получаем данные о голосах из localStorage или создаем по умолчанию
+        let votes = JSON.parse(localStorage.getItem('votes')) || {
+            video1: { up: 0, down: 0 },
+            video2: { up: 0, down: 0 },
+        };
+
+        // Обновляем отображение голосов на странице
+        function updateVotes(videoId) {
+            document.getElementById(`${videoId}-up`).textContent = votes[videoId].up;
+            document.getElementById(`${videoId}-down`).textContent = votes[videoId].down;
+        }
+
+        // Функция голосования
+        function vote(videoId, voteType) {
+            // Проверка, проголосовал ли уже пользователь
+            if (localStorage.getItem(`${videoId}-voted`)) {
+                alert('Вы уже проголосовали за это видео!');
+                return;
+            }
+
+            // Обновление голосов
+            if (voteType === 'up') {
+                votes[videoId].up += 1;
+            } else if (voteType === 'down') {
+                votes[videoId].down += 1;
+            }
+
+            // Сохранение в localStorage
+            localStorage.setItem('votes', JSON.stringify(votes));
+            localStorage.setItem(`${videoId}-voted`, 'true'); // Отметка, что пользователь проголосовал
+
+            // Обновление отображения
+            updateVotes(videoId);
+        }
+
+        // Инициализация отображения голосов при загрузке
+        updateVotes('video1');
+        updateVotes('video2');
+    </script>
+</body>
+</html>
+    
+    
+    
+    
 
     <section class="post">
         <h2>Размышления о жизни: мой первый пост</h2>
