@@ -58,20 +58,18 @@
             color: #2e8b57; /* Яркий зелёный при наведении */
         }
 
-        .video-container {
-            margin-bottom: 18px;
-            animation: zoomIn 2s ease-in-out;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень вокруг видео */
-        }
+        
+    
+        <style>
+    .video-container {
+        width: 300px;
+        height: 200px;
+        margin-bottom: 18px;
+        animation: zoomIn 2s ease-in-out;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Тень вокруг видео */
+    }
 
-        iframe {
-            width: 100%;
-            max-width: 500px;
-            height: 500px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        }
-
+    
         section.post {
             background: rgba(255, 255, 255, 0.9);
             padding: 24px;
@@ -184,7 +182,15 @@
 
     <div class="video-container">
         <iframe src="https://www.youtube.com/embed/mFMgnGCjONw?start=74" frameborder="0" allowfullscreen></iframe>
+        <p>Это видео рассказывает о глубине наших мыслей и вдохновляет на новые открытия.</p>
     </div>
+    
+    
+    
+    <div class="video-container">
+    <iframe src="https://youtube.com/embed/Uc3xONseoTU?t=1s" frameborder="0" allowfullscreen></iframe>
+    <p>Это видео рассказывает о глубине наших мыслей и вдохновляет на новые открытия.</p>
+</div>
 
     <section class="post">
         <h2>Размышления о жизни: мой первый пост</h2>
@@ -279,13 +285,6 @@
 </style>
 
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-BEJG7RH0FJ');
-</script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEJG7RH0FJ"></script>
@@ -298,103 +297,26 @@
 </script>
 
 <body>
-    <title>Обсуждение</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; background: #f5f5f5; }
-        .discussion-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
-        .message { text-align: left; margin-bottom: 15px; padding: 10px; background: #ecf0f1; border-radius: 8px; }
-        .message strong { color: #2c3e50; }
-        input, button { width: 100%; padding: 10px; margin-top: 10px; border: none; border-radius: 5px; font-size: 16px; }
-        button { background: #3498db; color: white; cursor: pointer; }
-        button:hover { background: #2980b9; }
-    </style>
-</head>
-<body>
-
-    
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Обсуждение (локальное)</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            background: url('https://i.okcdn.ru/i?r=BDHsYJQ9nKW8WSbKUwTOyh4ogcNcNHaypKUmy6E01lHuJiwG6UzK019EO4ypBM7uiSU&dpr=2') no-repeat center center fixed; 
-            background-size: cover;
-            color: white;
-        }
-        .discussion-container { 
-            max-width: 600px; 
-            margin: auto; 
-            background: rgba(255, 255, 255, 0.9); 
-            padding: 20px; 
-            border-radius: 10px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: black;
-        }
-        .message { 
-            text-align: left; 
-            margin-bottom: 15px; 
-            padding: 10px; 
-            background: #ecf0f1; 
-            border-radius: 8px; 
-        }
-        .message strong { color: #2c3e50; }
-        input, button { 
-            width: 100%; 
-            padding: 10px; 
-            margin-top: 10px; 
-            border: none; 
-            border-radius: 5px; 
-            font-size: 16px; 
-        }
-        button { 
-            background: #3498db; 
-            color: white; 
-            cursor: pointer; 
-        }
-        button:hover { background: #2980b9; }
-    </style>
-</head>
-<body>
     <h1>Обсуждение</h1>
     <div class="discussion-container">
         <div id="messages"></div>
         <input type="text" id="username" placeholder="Ваше имя">
         <input type="text" id="message" placeholder="Ваше сообщение">
         <button onclick="sendMessage()">Отправить</button>
-    </div>
-
-    <script>
-        function loadMessages() {
-            let messages = JSON.parse(localStorage.getItem('messages')) || [];
-            const messagesDiv = document.getElementById('messages');
-            messagesDiv.innerHTML = '';
-            messages.forEach(msg => {
-                let div = document.createElement('div');
-                div.classList.add('message');
-                div.innerHTML = `<strong>${msg.username}:</strong> ${msg.text} <br><small>${msg.time}</small>`;
-                messagesDiv.appendChild(div);
-            });
+    </div><script>
+    function sendMessage() {
+        let username = document.getElementById('username').value;
+        let message = document.getElementById('message').value;
+        if (username && message) {
+            let messagesDiv = document.getElementById('messages');
+            let newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+            newMessage.innerHTML = `<strong>${username}:</strong> ${message}`;
+            messagesDiv.appendChild(newMessage);
+            document.getElementById('message').value = '';
         }
+    }
+</script>
 
-        function sendMessage() {
-            let username = document.getElementById('username').value;
-            let message = document.getElementById('message').value;
-            if (username && message) {
-                let messages = JSON.parse(localStorage.getItem('messages')) || [];
-                let newMessage = { username, text: message, time: new Date().toLocaleString() };
-                messages.push(newMessage);
-                localStorage.setItem('messages', JSON.stringify(messages));
-                document.getElementById('message').value = '';
-                loadMessages();
-            }
-        }
-
-        loadMessages();
-    </script>
 </body>
 </html>
