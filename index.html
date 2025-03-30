@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Интеллигентный Влог</title>
+    <title>Насаат медиа</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing Script:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
     
@@ -311,7 +311,7 @@ const likeBtn = document.createElement('button');
     </section>
 
     <div class="links-container">
-        <p>Полезные источники для расширения кругозора:</p>
+        <p>Полезные ссылки:</p>
         <ol>
             <li><a href="https://www.google.com" target="_blank">Google</a></li>
             <li><a href="https://www.wikipedia.org" target="_blank">Wikipedia</a></li>
@@ -326,135 +326,3 @@ const likeBtn = document.createElement('button');
 
 
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отзывы</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        .review-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .review-box {
-            background-color: #f9f9f9;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .review-box strong {
-            color: #333;
-            font-weight: bold;
-        }
-
-        .review-box span {
-            color: #888;
-            font-size: 12px;
-            display: block;
-            margin-top: 10px;
-        }
-
-        .review-inputs {
-            margin-top: 20px;
-        }
-
-        .review-inputs input,
-        .review-inputs textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-
-        .review-inputs button {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .review-inputs button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <h1>Оставьте свой отзыв</h1>
-
-    <div class="review-container">
-        <div id="reviews"></div>
-
-        <div class="review-inputs">
-            <input type="text" id="username" placeholder="Ваше имя" required>
-            <textarea id="message" rows="4" placeholder="Ваш отзыв" required></textarea>
-            <button onclick="submitReview()">Оставить отзыв</button>
-        </div>
-    </div>
-
-    <script>
-        // Функция для загрузки отзывов из LocalStorage
-        function loadReviews() {
-            const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-            const reviewDiv = document.getElementById('reviews');
-            reviewDiv.innerHTML = '';
-            reviews.forEach(review => {
-                const reviewBox = document.createElement('div');
-                reviewBox.classList.add('review-box');
-                reviewBox.innerHTML = `<strong>${review.username}</strong>: ${review.message}<span>${review.date}</span>`;
-                reviewDiv.appendChild(reviewBox);
-            });
-        }
-
-        // Функция для отправки отзыва
-        function submitReview() {
-            const username = document.getElementById('username').value;
-            const message = document.getElementById('message').value;
-
-            if (username && message) {
-                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-                const newReview = {
-                    username: username,
-                    message: message,
-                    date: new Date().toLocaleString()
-                };
-                reviews.push(newReview);
-                localStorage.setItem('reviews', JSON.stringify(reviews));
-
-                document.getElementById('username').value = '';
-                document.getElementById('message').value = '';
-                loadReviews(); // Перезагружаем отзывы
-            } else {
-                alert('Пожалуйста, заполните все поля.');
-            }
-        }
-
-        // Загружаем отзывы при загрузке страницы
-        window.onload = loadReviews;
-    </script>
-</body>
-</html>
